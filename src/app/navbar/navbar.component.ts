@@ -16,7 +16,4 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addProject() {
-    this.router.navigate(['/add']);
-  }
 }

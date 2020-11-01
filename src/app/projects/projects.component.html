@@ -1,7 +1,7 @@
 <div>
   <br>
   <div class="list-group">
-    <a *ngFor="let project of projects" class="btn-primary list-group-item list-group-item-action">
+    <a *ngFor="let project of projects" [routerLink]="['/project', project.uuid]" class="btn-primary list-group-item list-group-item-action">
       <span>{{project.number}} - {{project.title}}</span>
       <a (click)="delete(project)" class="pull-right text-danger">
         <i class="fa fa-trash-o" ></i>
