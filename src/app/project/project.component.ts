@@ -1,9 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Input,
+  OnInit,
+  QueryList
+} from '@angular/core';
 import {Project} from "../projects/model/project";
 import {Router, ActivatedRoute, ParamMap} from "@angular/router";
-import {switchMap} from "rxjs/operators";
+import {delay, map, startWith, switchMap} from "rxjs/operators";
 import {ApiService} from "../shared/api.service";
 import {Observable} from "rxjs";
+import {TabItemComponent} from "./tabs/tab-item/tab-item.component";
 
 @Component({
   selector: 'app-project',
@@ -11,7 +20,6 @@ import {Observable} from "rxjs";
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
-  // project: Observable<Project>;
   project: Project = {
     categories: [],
     customer: "",

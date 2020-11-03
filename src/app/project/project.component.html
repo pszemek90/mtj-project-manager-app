@@ -1,4 +1,14 @@
-<div class="py-2 ">
-<!--  <h3>test</h3>-->
-  <h3>{{project.number}} - {{project.title}}</h3>
+<div class="py-2 container jumbotron">
+  <div class="text-center">
+    <h3>{{project.number}} - {{project.title}}</h3>
+  </div>
+  <app-options-navbar></app-options-navbar>
 </div>
+<app-tabs *ngFor="let category of project.categories">
+  <app-tab-item>
+    <app-tab-label>{{category | uppercase}}</app-tab-label>
+    <div class="list-group" *ngFor="let message of project.messages">
+      <app-tab-body *ngIf="(message.category | lowercase) === (category | lowercase)">{{message.title}}</app-tab-body>
+    </div>
+  </app-tab-item>
+</app-tabs>
