@@ -1,6 +1,6 @@
 import {
   AfterContentChecked,
-  AfterContentInit,
+  AfterContentInit, AfterViewInit,
   Component,
   ContentChildren,
   Input,
@@ -19,7 +19,7 @@ import {TabItemComponent} from "./tabs/tab-item/tab-item.component";
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent implements OnInit{
   project: Project = {
     categories: [],
     customer: "",
@@ -30,17 +30,18 @@ export class ProjectComponent implements OnInit {
 
   };
 
-  constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService) {
+  }
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
-      switchMap((params: ParamMap)=>
-      this.apiService.getProject(params.get('uuid')))
+      switchMap((params: ParamMap) =>
+        this.apiService.getProject(params.get('uuid')))
     ).subscribe(
       res => {
         this.project = res;
+        this.apiService.setProject(this.project);
       }
     )
   }
-
 }

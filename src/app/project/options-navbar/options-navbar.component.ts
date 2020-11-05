@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalService} from "../../shared/modal.service";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {ModalComponent} from "./modal/modal.component";
 
 @Component({
   selector: 'app-options-navbar',
@@ -8,16 +9,17 @@ import {ModalService} from "../../shared/modal.service";
 })
 export class OptionsNavbarComponent implements OnInit {
 
-  constructor(private modalService: ModalService) { }
+  constructor(public matDialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
-  openModal(id:string){
-    this.modalService.open(id);
+  openModal(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "modal-component";
+    const modalDialog = this.matDialog.open(ModalComponent, dialogConfig);
   }
 
-  closeModal(id: string){
-    this.modalService.close(id);
-  }
+
 }

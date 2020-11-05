@@ -8,11 +8,14 @@ import {Project} from "../projects/model/project";
 })
 export class ApiService {
 
+  private project: Project;
+
   private BASE_URL = "http://localhost:8080/api";
   private ALL_PROJECTS_URL = `${this.BASE_URL}\\projects`;
   private CREATE_PROJECT_URL = `${this.BASE_URL}\\projects\\add`;
   private DELETE_PROJECT_URL = `${this.BASE_URL}\\projects`;
   private GET_PROJECT_URL = `${this.BASE_URL}\\projects`;
+  private UPDATE_PROJECT_URL = `${this.BASE_URL}\\projects`;
 
   constructor(private http: HttpClient) { }
 
@@ -30,5 +33,16 @@ export class ApiService {
 
   getProject(uuid: string): Observable<Project>{
     return this.http.get<Project>(this.GET_PROJECT_URL + "/" + uuid);
+  }
+  updateProject(uuid:string, category: string): Observable<Project>{
+    return this.http.post<Project>(this.UPDATE_PROJECT_URL + "/" + uuid, category);
+  }
+
+  setProject(project: Project) {
+    this.project = project;
+  }
+
+  getCurrentProject(): Project{
+    return this.project;
   }
 }
