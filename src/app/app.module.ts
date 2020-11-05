@@ -15,7 +15,9 @@ import { TabLabelComponent } from './project/tabs/tab-item/tab-label/tab-label.c
 import { TabBodyComponent } from './project/tabs/tab-item/tab-body/tab-body.component';
 import { TabsComponent } from './project/tabs/tabs.component';
 import { OptionsNavbarComponent } from './project/options-navbar/options-navbar.component';
-import { AddCategoryComponent } from './project/add-category/add-category.component';
+import { AddCategoryComponent } from './project/options-navbar/add-category/add-category.component';
+import {ModalModule} from "ng-uikit-pro-standard";
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -32,15 +34,18 @@ import { AddCategoryComponent } from './project/add-category/add-category.compon
     TabsComponent,
     OptionsNavbarComponent,
     AddCategoryComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgbModule,
     FormsModule,
+    ModalModule,
     AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }
