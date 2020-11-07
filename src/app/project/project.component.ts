@@ -1,18 +1,8 @@
-import {
-  AfterContentChecked,
-  AfterContentInit, AfterViewInit,
-  Component,
-  ContentChildren,
-  Input,
-  OnInit,
-  QueryList
-} from '@angular/core';
-import {Project} from "../projects/model/project";
-import {Router, ActivatedRoute, ParamMap} from "@angular/router";
-import {delay, map, startWith, switchMap} from "rxjs/operators";
+import {Component, OnInit} from '@angular/core';
+import {Project} from "../model/project";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {switchMap} from "rxjs/operators";
 import {ApiService} from "../shared/api.service";
-import {Observable} from "rxjs";
-import {TabItemComponent} from "./tabs/tab-item/tab-item.component";
 
 @Component({
   selector: 'app-project',

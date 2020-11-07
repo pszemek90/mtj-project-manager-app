@@ -10,15 +10,12 @@ import {HttpClientModule} from "@angular/common/http";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
 import { AddProjectComponent } from './add-project/add-project.component';
-import { TabItemComponent } from './project/tabs/tab-item/tab-item.component';
-import { TabLabelComponent } from './project/tabs/tab-item/tab-label/tab-label.component';
-import { TabBodyComponent } from './project/tabs/tab-item/tab-body/tab-body.component';
-import { TabsComponent } from './project/tabs/tabs.component';
 import { OptionsNavbarComponent } from './project/options-navbar/options-navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import {ModalComponent} from "./project/options-navbar/modal/modal.component";
+import {MatTabsModule} from "@angular/material/tabs";
 
 
 
@@ -29,10 +26,6 @@ import {ModalComponent} from "./project/options-navbar/modal/modal.component";
     ProjectsComponent,
     ProjectComponent,
     AddProjectComponent,
-    TabItemComponent,
-    TabLabelComponent,
-    TabBodyComponent,
-    TabsComponent,
     OptionsNavbarComponent,
     ModalComponent,
   ],
@@ -44,7 +37,8 @@ import {ModalComponent} from "./project/options-navbar/modal/modal.component";
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

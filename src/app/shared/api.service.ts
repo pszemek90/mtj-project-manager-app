@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Project} from "../projects/model/project";
+import {Project} from "../model/project";
+import {Category} from "../model/category";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class ApiService {
   getProject(uuid: string): Observable<Project>{
     return this.http.get<Project>(this.GET_PROJECT_URL + "/" + uuid);
   }
-  updateProject(uuid:string, category: string): Observable<Project>{
+  updateProject(uuid:string, category: Category): Observable<Project>{
     return this.http.post<Project>(this.UPDATE_PROJECT_URL + "/" + uuid, category);
   }
 

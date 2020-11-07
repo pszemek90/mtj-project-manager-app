@@ -4,11 +4,12 @@
   </div>
   <app-options-navbar></app-options-navbar>
 </div>
-<app-tabs *ngFor="let category of project.categories">
-  <app-tab-item>
-    <app-tab-label>{{category | uppercase}}</app-tab-label>
-    <div class="list-group" *ngFor="let message of project.messages">
-      <app-tab-body *ngIf="(message.category | lowercase) === (category | lowercase)">{{message.title}}</app-tab-body>
+<mat-tab-group>
+  <mat-tab *ngFor="let category of project.categories" [label] = category.title>
+    <div *ngFor="let message of project.messages">
+      <span *ngIf="(message.category | lowercase) === (category.title | lowercase)">
+        {{message.title}}
+      </span>
     </div>
-  </app-tab-item>
-</app-tabs>
+  </mat-tab>
+</mat-tab-group>

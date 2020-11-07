@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Project} from "../projects/model/project";
+import {Project} from "../model/project";
 import {ApiService} from "../shared/api.service";
 import {Router} from "@angular/router";
 
