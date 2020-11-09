@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Project} from "../model/project";
 import {ApiService} from "../shared/api.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-projects',
@@ -12,7 +11,7 @@ export class ProjectsComponent implements OnInit {
 
   projects: Project[] = [];
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(private apiService: ApiService) {
   }
 
   ngOnInit(): void {

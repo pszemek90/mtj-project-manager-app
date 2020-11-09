@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {ProjectsComponent} from "./projects/projects.component";
 import {AddProjectComponent} from "./add-project/add-project.component";
 import {ProjectComponent} from "./project/project.component";
+import {MessageComponent} from "./message/message.component";
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'projects',
     component: ProjectsComponent
+  },
+  {
+    path:'projects/:pUuid/messages/:mUuid',
+    component: MessageComponent
   },
   {
     path: 'add',

@@ -2,14 +2,38 @@
   <div class="text-center">
     <h3>{{project.number}} - {{project.title}}</h3>
   </div>
-  <app-options-navbar></app-options-navbar>
+  <app-options-navbar [selectedIndex]="selected.value"></app-options-navbar>
 </div>
-<mat-tab-group>
-  <mat-tab *ngFor="let category of project.categories" [label] = category.title>
+<mat-tab-group (selectedIndexChange)="selected.setValue($event)">
+  <mat-tab label="Wszystkie">
+    <div class="list-group-item d-flex my-1 p-0" *ngFor="let message of project.messages">
+      <div class="col-11 border-right list-group-item-action py-3"
+           [routerLink]="['/projects', project.uuid, 'messages', message.uuid]">
+        <span>
+          {{message.title}}
+        </span>
+        <span class="pull-right">
+          {{message.date | date: 'dd/MM/y HH:mm'}}
+        </span>
+      </div>
+      <div class="col-1 text-center list-group-item-action py-3">
+        <span>
+          <i class="fa fa-trash-o"></i>
+        </span>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab *ngFor="let category of project.categories" [label]="category">
     <div *ngFor="let message of project.messages">
-      <span *ngIf="(message.category | lowercase) === (category.title | lowercase)">
-        {{message.title}}
-      </span>
+      <div *ngIf="(message.category | lowercase) === (category | lowercase)"
+           class="list-group-item list-group-item-action my-1">
+        <span>
+          {{message.title}}
+        </span>
+        <span class="pull-right">
+          {{message.date | date: 'dd/MM/y HH:mm'}}
+        </span>
+      </div>
     </div>
   </mat-tab>
 </mat-tab-group>

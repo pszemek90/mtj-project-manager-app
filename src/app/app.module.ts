@@ -14,8 +14,10 @@ import { OptionsNavbarComponent } from './project/options-navbar/options-navbar.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
-import {ModalComponent} from "./project/options-navbar/modal/modal.component";
+import {AddCategoryComponent} from "./project/options-navbar/modals/add-category/add-category.component";
 import {MatTabsModule} from "@angular/material/tabs";
+import { AddMessageComponent } from './project/options-navbar/modals/add-message/add-message.component';
+import { MessageComponent } from './message/message.component';
 
 
 
@@ -27,7 +29,9 @@ import {MatTabsModule} from "@angular/material/tabs";
     ProjectComponent,
     AddProjectComponent,
     OptionsNavbarComponent,
-    ModalComponent,
+    AddCategoryComponent,
+    AddMessageComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,6 @@ import {MatTabsModule} from "@angular/material/tabs";
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalComponent]
+  entryComponents: [AddCategoryComponent]
 })
 export class AppModule { }

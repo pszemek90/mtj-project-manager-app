@@ -3,5 +3,6 @@ export interface Message {
   title: string;
   text: string;
   category: string;
-  project:string;
+  project: string;
+  date: number;
 }

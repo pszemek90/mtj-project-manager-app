@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Project} from "../model/project";
 import {Category} from "../model/category";
+import {Message} from "../model/message";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class ApiService {
   private DELETE_PROJECT_URL = `${this.BASE_URL}\\projects`;
   private GET_PROJECT_URL = `${this.BASE_URL}\\projects`;
   private UPDATE_PROJECT_URL = `${this.BASE_URL}\\projects`;
+  private GET_MESSAGE_URL= `${this.BASE_URL}\\projects`;
 
   constructor(private http: HttpClient) { }
 
@@ -35,8 +37,21 @@ export class ApiService {
   getProject(uuid: string): Observable<Project>{
     return this.http.get<Project>(this.GET_PROJECT_URL + "/" + uuid);
   }
-  updateProject(uuid:string, category: Category): Observable<Project>{
+
+  getMessage(pUuid: string, mUuid: string): Observable<Message>{
+    return this.http.get<Message>(this.GET_MESSAGE_URL + "/" + pUuid + "/messages/" + mUuid);
+  }
+
+  updateProject(project: Project): Observable<Project>{
+    return this.http.put<Project>(this.UPDATE_PROJECT_URL + "/" + project.uuid, project);
+  }
+
+  addCategory(uuid:string, category: Category): Observable<Project>{
     return this.http.post<Project>(this.UPDATE_PROJECT_URL + "/" + uuid, category);
+  }
+
+  addMessage(uuid:string, message: Message): Observable<Project>{
+    return this.http.post<Project>(this.UPDATE_PROJECT_URL + "/" + uuid, message);
   }
 
   setProject(project: Project) {
