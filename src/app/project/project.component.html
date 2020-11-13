@@ -16,7 +16,7 @@
           {{message.date | date: 'dd/MM/y HH:mm'}}
         </span>
       </div>
-      <div class="col-1 text-center list-group-item-action py-3">
+      <div class="col-1 text-center list-group-item-action py-3" (click)="deleteMessage(message)">
         <span>
           <i class="fa fa-trash-o"></i>
         </span>
@@ -26,13 +26,21 @@
   <mat-tab *ngFor="let category of project.categories" [label]="category">
     <div *ngFor="let message of project.messages">
       <div *ngIf="(message.category | lowercase) === (category | lowercase)"
-           class="list-group-item list-group-item-action my-1">
-        <span>
-          {{message.title}}
-        </span>
-        <span class="pull-right">
-          {{message.date | date: 'dd/MM/y HH:mm'}}
-        </span>
+           class="list-group-item d-flex p-0 my-1">
+        <div class="col-11 border-right list-group-item-action py-3"
+             [routerLink]="['/projects', project.uuid, 'messages', message.uuid]">
+          <span>
+            {{message.title}}
+          </span>
+          <span class="pull-right">
+            {{message.date | date: 'dd/MM/y HH:mm'}}
+          </span>
+        </div>
+        <div class="col-1 text-center list-group-item-action py-3" (click)="deleteMessage(message)">
+          <span>
+            <i class="fa fa-trash-o"></i>
+          </span>
+        </div>
       </div>
     </div>
   </mat-tab>

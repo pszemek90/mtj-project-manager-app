@@ -18,6 +18,7 @@ import {AddCategoryComponent} from "./project/options-navbar/modals/add-category
 import {MatTabsModule} from "@angular/material/tabs";
 import { AddMessageComponent } from './project/options-navbar/modals/add-message/add-message.component';
 import { MessageComponent } from './message/message.component';
+import {ApiService} from "./shared/api.service";
 
 
 
@@ -44,7 +45,7 @@ import { MessageComponent } from './message/message.component';
     MatDialogModule,
     MatTabsModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent],
   entryComponents: [AddCategoryComponent]
 })

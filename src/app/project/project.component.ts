@@ -4,6 +4,7 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {switchMap} from "rxjs/operators";
 import {ApiService} from "../shared/api.service";
 import {FormControl} from "@angular/forms";
+import {Message} from "../model/message";
 
 @Component({
   selector: 'app-project',
@@ -36,5 +37,19 @@ export class ProjectComponent implements OnInit{
         this.apiService.setProject(this.project);
       }
     )
+  }
+
+  deleteMessage(message: Message) {
+    let messageToDeleteIndex = this.project.messages.indexOf(message, 0);
+    this.project.messages.splice(messageToDeleteIndex, 1);
+    this.apiService.updateProject(this.project).subscribe(
+      res => {
+        alert("Wiadomość usunięta");
+      },
+      error => {
+        alert("An error occurred");
+      }
+
+    );
   }
 }

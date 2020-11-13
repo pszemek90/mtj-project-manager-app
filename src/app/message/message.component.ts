@@ -16,8 +16,9 @@ export class MessageComponent implements OnInit {
     category: "", date: 0, project: "", text: "", title: "", uuid: ""
   };
 
-  public project: Project = this.apiService.getCurrentProject();
-
+  public project: Project = {
+    categories: [], customer: "", messages: [], number: "", title: "", uuid: ""
+  };
 
   constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService) {
   }
@@ -29,11 +30,14 @@ export class MessageComponent implements OnInit {
     ).subscribe(
       res => {
         this.message = res;
-        // this.apiService.getProject(this.message.project).subscribe(
-        //   res => {
-        //     this.project = res;
-        //   }
-        // );
+      }
+    )
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap)=>
+        this.apiService.getProject(params.get('pUuid')))
+    ).subscribe(
+      res =>{
+        this.project = res;
       }
     )
   }
