@@ -19,6 +19,8 @@ import {MatTabsModule} from "@angular/material/tabs";
 import { AddMessageComponent } from './project/options-navbar/modals/add-message/add-message.component';
 import { MessageComponent } from './message/message.component';
 import {ApiService} from "./shared/api.service";
+import { ProjectFilterPipe } from './shared/project-filter.pipe';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -33,6 +35,8 @@ import {ApiService} from "./shared/api.service";
     AddCategoryComponent,
     AddMessageComponent,
     MessageComponent,
+    ProjectFilterPipe,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

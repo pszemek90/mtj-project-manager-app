@@ -17,13 +17,13 @@ export class AddProjectComponent implements OnInit {
     number: "",
     title: "",
     uuid: null
-
   }
 
   constructor(private apiService:ApiService, private router: Router) {
   }
 
   ngOnInit(): void {
+
   }
 
   onSubmit() {

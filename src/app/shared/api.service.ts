@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Project} from "../model/project";
 import {Category} from "../model/category";
@@ -12,7 +12,7 @@ export class ApiService {
 
   private project: Project;
 
-  private BASE_URL = "http://localhost:8080/api";
+  private BASE_URL = window["cfgApiBaseUrl"] + "/api";
   private ALL_PROJECTS_URL = `${this.BASE_URL}\\projects`;
   private CREATE_PROJECT_URL = `${this.BASE_URL}\\projects\\add`;
   private DELETE_PROJECT_URL = `${this.BASE_URL}\\projects`;
@@ -23,35 +23,47 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getAllProjects(): Observable<Project[]>{
-    return this.http.get<Project[]>(this.ALL_PROJECTS_URL);
+    const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.get<Project[]>(this.ALL_PROJECTS_URL, {headers});
   }
 
   postProject(project: Project): Observable<Project>{
-    return this.http.post<Project>(this.CREATE_PROJECT_URL, project);
+    const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.post<Project>(this.CREATE_PROJECT_URL, project, {headers});
   }
 
   deleteProject(uuid: string): Observable<any>{
-    return this.http.delete(this.DELETE_PROJECT_URL + "/" + uuid);
+    const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.delete(this.DELETE_PROJECT_URL + "/" + uuid, {headers});
   }
 
   getProject(uuid: string): Observable<Project>{
-    return this.http.get<Project>(this.GET_PROJECT_URL + "/" + uuid);
+    const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.get<Project>(this.GET_PROJECT_URL + "/" + uuid, {headers});
   }
 
   getMessage(pUuid: string, mUuid: string): Observable<Message>{
-    return this.http.get<Message>(this.GET_MESSAGE_URL + "/" + pUuid + "/messages/" + mUuid);
+    const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.get<Message>(this.GET_MESSAGE_URL + "/" + pUuid + "/messages/" + mUuid, {headers});
   }
 
   updateProject(project: Project): Observable<Project>{
-    return this.http.put<Project>(this.UPDATE_PROJECT_URL + "/" + project.uuid, project);
+    const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.put<Project>(this.UPDATE_PROJECT_URL + "/" + project.uuid, project, {headers});
   }
 
   addCategory(uuid:string, category: Category): Observable<Project>{
-    return this.http.post<Project>(this.UPDATE_PROJECT_URL + "/" + uuid, category);
+    const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.post<Project>(this.UPDATE_PROJECT_URL + "/" + uuid, category, {headers});
   }
 
   addMessage(uuid:string, message: Message): Observable<Project>{
-    return this.http.post<Project>(this.UPDATE_PROJECT_URL + "/" + uuid, message);
+    const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.post<Project>(this.UPDATE_PROJECT_URL + "/" + uuid, message, {headers});
+  }
+
+  isAuthenticated(): boolean{
+    return sessionStorage.getItem('token') != '';
   }
 
   setProject(project: Project) {

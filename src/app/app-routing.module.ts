@@ -4,6 +4,7 @@ import {ProjectsComponent} from "./projects/projects.component";
 import {AddProjectComponent} from "./add-project/add-project.component";
 import {ProjectComponent} from "./project/project.component";
 import {MessageComponent} from "./message/message.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {
@@ -23,14 +24,22 @@ const routes: Routes = [
     component:AddProjectComponent
   },
   {
+    path: 'login',
+    component:LoginComponent
+  },
+  {
     path: '',
     component:ProjectsComponent,
     pathMatch:'full'
   },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
+  imports: [RouterModule.forRoot(routes, {useHash:true, enableTracing: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
