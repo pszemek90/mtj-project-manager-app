@@ -12,18 +12,18 @@ export class NavbarComponent implements OnInit {
 
 
   constructor(private apiService: ApiService, private router: Router) {
+
   }
 
   ngOnInit(): void {
-    sessionStorage.setItem('token', '');
   }
 
-  isAuthenticated(): boolean{
+  isAuthenticated(): boolean {
     return this.apiService.isAuthenticated();
   }
 
   logout() {
     sessionStorage.setItem('token', '');
-    this.router.navigate(['/projects']);
+    this.router.navigateByUrl('/projects');
   }
 }

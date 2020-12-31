@@ -20,7 +20,8 @@ export class ApiService {
   private UPDATE_PROJECT_URL = `${this.BASE_URL}\\projects`;
   private GET_MESSAGE_URL= `${this.BASE_URL}\\projects`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllProjects(): Observable<Project[]>{
     const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
@@ -63,7 +64,8 @@ export class ApiService {
   }
 
   isAuthenticated(): boolean{
-    return sessionStorage.getItem('token') != '';
+    let authToken: string = sessionStorage.getItem('token');
+    return authToken == "" || authToken == null;
   }
 
   setProject(project: Project) {
