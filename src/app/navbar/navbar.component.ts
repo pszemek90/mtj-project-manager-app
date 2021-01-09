@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from "../shared/api.service";
-import {Router} from "@angular/router";
+import {TokenStorageService} from "../shared/token-storage.service";
 
 
 @Component({
@@ -10,20 +9,32 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
 
+  private roles:  string[];
+  isLoggedIn = false;
+  isAdmin = false;
+  isModerator = false;
+  username: string;
 
-  constructor(private apiService: ApiService, private router: Router) {
+
+  constructor(private tokenStorageService: TokenStorageService) {
 
   }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if(this.isLoggedIn){
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+      this.isAdmin = this.roles.includes('ROLE_ADMIN');
+      this.isModerator = this.roles.includes('ROLE_MODERATOR');
+      this.username = user.username;
+    }
   }
 
-  isAuthenticated(): boolean {
-    return this.apiService.isAuthenticated();
+  logout(): void{
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 
-  logout() {
-    sessionStorage.setItem('token', '');
-    this.router.navigateByUrl('/projects');
-  }
+
 }

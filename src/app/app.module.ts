@@ -21,6 +21,9 @@ import { MessageComponent } from './message/message.component';
 import {ApiService} from "./shared/api.service";
 import { ProjectFilterPipe } from './shared/project-filter.pipe';
 import { LoginComponent } from './login/login.component';
+import {authInterceptorProviders} from './helpers/auth.interceptor';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -37,6 +40,8 @@ import { LoginComponent } from './login/login.component';
     MessageComponent,
     ProjectFilterPipe,
     LoginComponent,
+    RegisterComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,8 +54,8 @@ import { LoginComponent } from './login/login.component';
     MatDialogModule,
     MatTabsModule
   ],
-  providers: [ApiService],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
-  entryComponents: [AddCategoryComponent]
+  // entryComponents: [AddCategoryComponent]
 })
 export class AppModule { }

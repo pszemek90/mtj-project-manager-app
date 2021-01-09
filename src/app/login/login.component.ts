@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../model/user";
+import {AuthService} from "../shared/auth.service";
+import {TokenStorageService} from "../shared/token-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -10,30 +12,43 @@ import {User} from "../model/user";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user: User = {
-    email: "", firstName: "", lastName: "", password: "", uuid: ""
 
-  }
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private http: HttpClient
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService
   ) { }
 
   ngOnInit() {
-    sessionStorage.setItem('token', '');
+    if (this.tokenStorage.getToken()){
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
   }
 
-  login() {
-    let url = 'http://localhost:8081/api/users/login';
-    this.http.post<Observable<boolean>>(url, this.user).subscribe(isValid => {
-      if (isValid) {
-        sessionStorage.setItem('token', btoa(this.user.email + ':' + this.user.password));
-        this.router.navigate(['']);
-      } else {
-        alert("Authentication failed.")
+  onSubmit(): void {
+    this.authService.login(this.form).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.reloadPage();
+      },
+      error => {
+        this.errorMessage = error.error.message;
+        this.isLoginFailed = true;
       }
-    });
+    )
+  }
+
+  private reloadPage(): void {
+    window.location.reload();
   }
 }

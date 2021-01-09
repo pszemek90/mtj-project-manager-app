@@ -10,22 +10,22 @@
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item active" *ngIf="isLoggedIn">
         <a class="btn btn-warning text-dark mx-1" routerLink="/projects">Projekty <span class="sr-only">(current)</span></a>
       </li>
-      <li *ngIf="!isAuthenticated()">
+      <li *ngIf="isModerator">
         <button type="button" class="btn btn-success mx-1 text-dark" routerLink="add" >
           <i class="fa fa-plus"></i>
           <span> Dodaj projekt</span>
         </button>
       </li>
     </ul>
-      <span *ngIf="isAuthenticated()">
+      <span *ngIf="!isLoggedIn">
         <button type="button" class="btn btn-warning mx-1 text-dark pull-right" routerLink="login">
           <span> Zaloguj się</span>
         </button>
       </span>
-      <span *ngIf="!isAuthenticated()">
+      <span *ngIf="isLoggedIn">
         <button type="button" class="btn btn-danger mx-1 text-dark pull-right" (click)="logout()">
           <span> Wyloguj się</span>
         </button>
