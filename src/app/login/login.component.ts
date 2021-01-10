@@ -1,8 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {User} from "../model/user";
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../shared/auth.service";
 import {TokenStorageService} from "../shared/token-storage.service";
 
@@ -34,7 +30,7 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.authService.login(this.form).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;

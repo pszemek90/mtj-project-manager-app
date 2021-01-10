@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from "../shared/token-storage.service";
+import {Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 
 @Component({
@@ -9,30 +11,33 @@ import {TokenStorageService} from "../shared/token-storage.service";
 })
 export class NavbarComponent implements OnInit {
 
-  private roles:  string[];
+  private roles: string[];
   isLoggedIn = false;
   isAdmin = false;
   isModerator = false;
   username: string;
 
 
-  constructor(private tokenStorageService: TokenStorageService) {
+  constructor(private tokenStorageService: TokenStorageService,
+              private router: Router,
+              private location: Location) {
 
   }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
-    if(this.isLoggedIn){
+    if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
       this.isAdmin = this.roles.includes('ROLE_ADMIN');
-      this.isModerator = this.roles.includes('ROLE_MODERATOR');
+      this.isModerator = this.roles.includes('ROLE_MOD');
       this.username = user.username;
     }
   }
 
-  logout(): void{
+  logout(): void {
     this.tokenStorageService.signOut();
+    this.location.go('/');
     window.location.reload();
   }
 

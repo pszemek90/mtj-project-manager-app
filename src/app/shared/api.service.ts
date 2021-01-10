@@ -24,8 +24,8 @@ export class ApiService {
   }
 
   getAllProjects(): Observable<Project[]>{
-    const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
-    return this.http.get<Project[]>(this.ALL_PROJECTS_URL, {headers});
+    // const headers = new HttpHeaders({'Authorization': 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.get<Project[]>(this.ALL_PROJECTS_URL);
   }
 
   postProject(project: Project): Observable<Project>{
