@@ -21,13 +21,14 @@ export class AddCategoryComponent implements OnInit {
 
   };
 
-  constructor(public dialogRef: MatDialogRef<AddCategoryComponent>, private apiService: ApiService) { }
+  constructor(public dialogRef: MatDialogRef<AddCategoryComponent>, private apiService: ApiService) {
+  }
 
   ngOnInit(): void {
     this.project = this.apiService.getCurrentProject();
   }
 
-  closeModal(){
+  closeModal() {
     this.dialogRef.close();
   }
 
@@ -37,11 +38,11 @@ export class AddCategoryComponent implements OnInit {
     this.apiService.updateProject(this.project).subscribe(
       res => {
         alert("Kategoria dodana")
-        window.location.reload();
       },
       error => {
         alert("An error occurred")
       }
     );
+    window.location.reload();
   }
 }
