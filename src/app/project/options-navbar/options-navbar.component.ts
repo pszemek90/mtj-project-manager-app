@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {AddCategoryComponent} from "./modals/add-category/add-category.component";
 import {AddMessageComponent} from "./modals/add-message/add-message.component";
-import {Category} from "../../model/category";
 import {ApiService} from "../../shared/api.service";
 
 @Component({
@@ -14,6 +13,8 @@ export class OptionsNavbarComponent implements OnInit {
 
   @Input()
   selectedIndex: number;
+  @Input()
+  isModerator: boolean;
 
   constructor(public matDialog: MatDialog, public apiService: ApiService) {
   }

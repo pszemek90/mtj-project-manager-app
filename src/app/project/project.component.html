@@ -2,7 +2,7 @@
   <div class="text-center">
     <h3>{{project.number}} - {{project.title}}</h3>
   </div>
-  <app-options-navbar [selectedIndex]="selected.value"></app-options-navbar>
+  <app-options-navbar [selectedIndex]="selected.value" [isModerator]="isModerator"></app-options-navbar>
 </div>
 <mat-tab-group (selectedIndexChange)="selected.setValue($event)">
   <mat-tab label="Wszystkie">
@@ -16,7 +16,7 @@
           {{message.date | date: 'dd/MM/y HH:mm'}}
         </span>
       </div>
-      <div class="col-1 text-center list-group-item-action py-3" (click)="deleteMessage(message)">
+      <div *ngIf="isModerator" class="col-1 text-center list-group-item-action py-3" (click)="deleteMessage(message)">
         <span>
           <i class="fa fa-trash-o"></i>
         </span>
@@ -36,7 +36,7 @@
             {{message.date | date: 'dd/MM/y HH:mm'}}
           </span>
         </div>
-        <div class="col-1 text-center list-group-item-action py-3" (click)="deleteMessage(message)">
+        <div *ngIf="isModerator" class="col-1 text-center list-group-item-action py-3" (click)="deleteMessage(message)">
           <span>
             <i class="fa fa-trash-o"></i>
           </span>

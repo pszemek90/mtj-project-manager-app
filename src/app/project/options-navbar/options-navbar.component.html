@@ -1,12 +1,12 @@
-<button type="button" class="btn btn-primary btn-action mx-1" (click)="addCategory()">
+<button *ngIf="isModerator" type="button" class="btn btn-primary btn-action mx-1" (click)="addCategory()">
   <i class="fa fa-plus"></i>
   <span> Dodaj kategorię</span>
 </button>
-<button type="button" class="btn btn-dark btn-action mx-1" (click)="addMessage()">
+<button *ngIf="isModerator" type="button" class="btn btn-dark btn-action mx-1" (click)="addMessage()">
   <i class="fa fa-plus"></i>
   <span> Dodaj wiadomość</span>
 </button>
-<button type="button" *ngIf="selectedIndex !== 0" class="btn btn-danger btn-action mx-1 pull-right"
+<button type="button" *ngIf="selectedIndex !== 0 && isModerator" class="btn btn-danger btn-action mx-1 pull-right"
         (click)="deleteCategory(selectedIndex)">
   Usuń kategorię
 </button>

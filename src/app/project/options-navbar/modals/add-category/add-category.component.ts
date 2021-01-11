@@ -38,11 +38,11 @@ export class AddCategoryComponent implements OnInit {
     this.apiService.updateProject(this.project).subscribe(
       res => {
         alert("Kategoria dodana")
+        window.location.reload();
       },
       error => {
         alert("An error occurred")
       }
     );
-    window.location.reload();
   }
 }

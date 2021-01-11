@@ -11,7 +11,7 @@
            class="col-11 py-3 btn-primary list-group-item list-group-item-action">
         {{project.number}} - {{project.title}}
       </div>
-      <div (click)="delete(project)" class="col-1 py-3 text-center btn-primary list-group-item list-group-item-action">
+      <div *ngIf="isModerator" (click)="delete(project)" class="col-1 py-3 text-center btn-primary list-group-item list-group-item-action">
         <i class="fa fa-trash-o"></i>
       </div>
     </li>

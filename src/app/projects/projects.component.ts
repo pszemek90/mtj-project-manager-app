@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Project} from "../model/project";
 import {ApiService} from "../shared/api.service";
-import {Observable, throwError} from "rxjs";
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
+import {TokenStorageService} from "../shared/token-storage.service";
 
 @Component({
   selector: 'app-projects',
@@ -13,13 +13,18 @@ export class ProjectsComponent implements OnInit {
 
   projects: Project[] = [];
   searchText: string;
-  userName: string;
+  isModerator = false;
+  roles: string[];
 
-  constructor(private apiService: ApiService, private http: HttpClient) {
+  constructor(private apiService: ApiService,
+              private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {
     this.getAllProjects();
+    const user = this.tokenStorageService.getUser();
+    this.roles = user.roles;
+    this.isModerator = this.roles.includes('ROLE_MOD');
   }
 
   public getAllProjects() {

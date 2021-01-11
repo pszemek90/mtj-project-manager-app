@@ -5,6 +5,7 @@ import {switchMap} from "rxjs/operators";
 import {ApiService} from "../shared/api.service";
 import {FormControl} from "@angular/forms";
 import {Message} from "../model/message";
+import {TokenStorageService} from "../shared/token-storage.service";
 
 @Component({
   selector: 'app-project',
@@ -13,6 +14,8 @@ import {Message} from "../model/message";
 })
 export class ProjectComponent implements OnInit{
   selected = new FormControl(0);
+  roles: string[];
+  isModerator = false;
 
   project: Project = {
     categories: [],
@@ -24,7 +27,10 @@ export class ProjectComponent implements OnInit{
 
   };
 
-  constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private apiService: ApiService,
+              private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit(): void {
@@ -37,6 +43,9 @@ export class ProjectComponent implements OnInit{
         this.apiService.setProject(this.project);
       }
     )
+    const user = this.tokenStorageService.getUser();
+    this.roles = user.roles;
+    this.isModerator = this.roles.includes('ROLE_MOD');
   }
 
   deleteMessage(message: Message) {
