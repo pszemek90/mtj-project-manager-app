@@ -24,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import {authInterceptorProviders} from './helpers/auth.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 
 
@@ -42,6 +43,7 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import {ProjectComponent} from "./project/project.component";
 import {MessageComponent} from "./message/message.component";
 import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
+import {AddUserComponent} from "./add-user/add-user.component";
 
 const routes: Routes = [
   {
@@ -21,8 +22,12 @@ const routes: Routes = [
     component: MessageComponent
   },
   {
-    path: 'add',
+    path: 'add-project',
     component:AddProjectComponent
+  },
+  {
+    path: 'add-user',
+    component: AddUserComponent
   },
   {
     path: 'login',

@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Project} from "../model/project";
 import {Category} from "../model/category";
 import {Message} from "../model/message";
+import {User} from "../model/user";
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,12 @@ export class ApiService {
 
   private BASE_URL = window["cfgApiBaseUrl"] + "/api";
   private ALL_PROJECTS_URL = `${this.BASE_URL}\\projects`;
-  private CREATE_PROJECT_URL = `${this.BASE_URL}\\projects\\add`;
+  private CREATE_PROJECT_URL = `${this.BASE_URL}\\projects\\add-project`;
   private DELETE_PROJECT_URL = `${this.BASE_URL}\\projects`;
   private GET_PROJECT_URL = `${this.BASE_URL}\\projects`;
   private UPDATE_PROJECT_URL = `${this.BASE_URL}\\projects`;
   private GET_MESSAGE_URL= `${this.BASE_URL}\\projects`;
+  private CREATE_USER_URL= `${this.BASE_URL}\\auth\\signup`;
 
   constructor(private http: HttpClient) {
   }
@@ -61,5 +63,9 @@ export class ApiService {
 
   getCurrentProject(): Project{
     return this.project;
+  }
+
+  postUser(user: User): Observable<User>{
+    return this.http.post<User>(this.CREATE_USER_URL, user);
   }
 }
