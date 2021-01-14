@@ -16,7 +16,15 @@
           {{message.date | date: 'dd/MM/y HH:mm'}}
         </span>
       </div>
-      <div *ngIf="isModerator" class="col-1 text-center list-group-item-action py-3" (click)="deleteMessage(message)">
+      <div *ngIf="isModerator"
+           class="col-1 text-center list-group-item-action py-3"
+           (click)="deleteMessage(message)">
+        <span>
+          <i class="fa fa-trash-o"></i>
+        </span>
+      </div>
+      <div *ngIf="!isModerator"
+           class="col-1 text-center py-3">
         <span>
           <i class="fa fa-trash-o"></i>
         </span>
