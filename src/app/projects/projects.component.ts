@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Project} from "../model/project";
 import {ApiService} from "../shared/api.service";
-import {HttpClient} from "@angular/common/http";
 import {TokenStorageService} from "../shared/token-storage.service";
 
 @Component({

@@ -9,18 +9,45 @@ import {HomeComponent} from "./home/home.component";
 import {AddUserComponent} from "./add-user/add-user.component";
 
 const routes: Routes = [
-  {
-    path:'projects/:uuid',
-    component:ProjectComponent
-  },
+  // {
+  //   path:'projects/:uuid',
+  //   component:ProjectComponent
+  // },
   {
     path: 'projects',
-    component: ProjectsComponent
+    children: [
+      {
+        path:'',
+        component: ProjectsComponent
+      },
+      {
+        path: ':pUuid',
+        data: {
+          breadcrumb: 'Projekt'
+        },
+        children: [
+          {
+            path: '',
+            data:{
+              breadcrumb: null
+            },
+            component: ProjectComponent
+          },
+          {
+            path: 'messages/:mUuid',
+            data: {
+              breadcrumb: 'Wiadomość'
+            },
+            component: MessageComponent
+          }
+        ]
+      }
+    ]
   },
-  {
-    path:'projects/:pUuid/messages/:mUuid',
-    component: MessageComponent
-  },
+  // {
+  //   path:'projects/:pUuid/messages/:mUuid',
+  //   component: MessageComponent
+  // },
   {
     path: 'add-project',
     component:AddProjectComponent

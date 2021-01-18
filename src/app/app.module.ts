@@ -25,6 +25,8 @@ import {authInterceptorProviders} from './helpers/auth.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import {BreadcrumbModule} from "primeng/breadcrumb";
 
 
 
@@ -44,18 +46,20 @@ import { AddUserComponent } from './add-user/add-user.component';
     RegisterComponent,
     HomeComponent,
     AddUserComponent,
+    BreadcrumbComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    NgbModule,
-    FormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatTabsModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        NgbModule,
+        FormsModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatTabsModule,
+        BreadcrumbModule
+    ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
   // entryComponents: [AddCategoryComponent]
