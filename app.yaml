@@ -1,0 +1,4 @@
+service: app
+runtime: nodejs12
+env: standard
+instance_class: F4

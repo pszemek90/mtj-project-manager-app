@@ -3,12 +3,12 @@
     <i class="fa fa-book text-warning"></i>
     <span class="text-warning"> Project Manager</span>
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
-          aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarButtons"
+          aria-controls="navbarButtons" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse">
+  <div class="collapse navbar-collapse" id="navbarButtons">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active" *ngIf="isLoggedIn">
         <a class="btn btn-warning text-dark mx-1" routerLink="/projects">Projekty <span class="sr-only">(current)</span></a>
