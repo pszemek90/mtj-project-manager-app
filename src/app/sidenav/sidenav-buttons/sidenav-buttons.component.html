@@ -1,0 +1,17 @@
+<ul class="navbar-nav mr-auto">
+  <li class="nav-item active" *ngIf="isLoggedIn">
+    <a class="btn btn-warning text-dark mx-1" routerLink="/projects">Projekty</a>
+  </li>
+  <li *ngIf="isModerator">
+    <button type="button" class="btn btn-success mx-1 text-dark" routerLink="add-project" >
+      <i class="fa fa-plus"></i>
+      <span> Dodaj projekt</span>
+    </button>
+  </li>
+  <li *ngIf="isAdmin">
+    <button type="button" class="btn btn-primary mx-1" routerLink="add-user" >
+      <i class="fa fa-plus"></i>
+      <span> Dodaj użytkownika</span>
+    </button>
+  </li>
+</ul>

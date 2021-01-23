@@ -1,0 +1,13 @@
+<app-navbar (sidenavToggle)="sidenav.toggle()"></app-navbar>
+<mat-sidenav-container
+  class="example-container"
+  style="background-color: #ffffff"
+  autosize>
+  <mat-sidenav #sidenav mode="side">
+    <app-sidenav-buttons></app-sidenav-buttons>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-breadcrumb></app-breadcrumb>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
