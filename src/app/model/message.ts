@@ -5,4 +5,5 @@ export interface Message {
   category: string;
   project: string;
   date: number;
+  tags: string[];
 }

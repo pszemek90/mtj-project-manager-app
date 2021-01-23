@@ -11,25 +11,27 @@ import {Message} from "../../../../model/message";
 })
 export class AddMessageComponent implements OnInit {
 
- message: Message = {
-   date: undefined,
-   project: "",
-   category: "", text: "", title: "", uuid: ""
+  message: Message = {
+    tags: [],
+    date: undefined,
+    project: "",
+    category: "", text: "", title: "", uuid: ""
 
- }
+  }
 
   project: Project = {
     categories: [], customer: "", messages: [], number: "", title: "", uuid: ""
 
   };
 
-  constructor(public dialogRef: MatDialogRef<AddMessageComponent>, private apiService: ApiService) { }
+  constructor(public dialogRef: MatDialogRef<AddMessageComponent>, private apiService: ApiService) {
+  }
 
   ngOnInit(): void {
     this.project = this.apiService.getCurrentProject();
   }
 
-  closeModal(){
+  closeModal() {
     this.dialogRef.close();
   }
 
@@ -48,4 +50,9 @@ export class AddMessageComponent implements OnInit {
     );
   }
 
+  addTag(tag: string) {
+    if (tag) {
+      this.message.tags.push(tag);
+    }
+  }
 }
