@@ -30,6 +30,8 @@ import {SidenavComponent} from './sidenav/sidenav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from "@angular/material/icon";
 import { SidenavButtonsComponent } from './sidenav/sidenav-buttons/sidenav-buttons.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -53,18 +55,20 @@ import { SidenavButtonsComponent } from './sidenav/sidenav-buttons/sidenav-butto
     SidenavButtonsComponent,
   ],
     imports: [
-        BrowserModule,
-        HttpClientModule,
-        NgbModule,
-        FormsModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatDialogModule,
-        MatTabsModule,
-        BreadcrumbModule,
-        MatSidenavModule,
-        MatIconModule
+      BrowserModule,
+      HttpClientModule,
+      NgbModule,
+      FormsModule,
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      MatButtonModule,
+      MatDialogModule,
+      MatTabsModule,
+      BreadcrumbModule,
+      MatSidenavModule,
+      MatIconModule,
+      MatChipsModule,
+      MatFormFieldModule
     ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

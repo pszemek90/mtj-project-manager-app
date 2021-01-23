@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {TokenStorageService} from "../../shared/token-storage.service";
+import {EventEmitter} from "@angular/core";
 
 @Component({
   selector: 'app-sidenav-buttons',
@@ -8,13 +9,16 @@ import {TokenStorageService} from "../../shared/token-storage.service";
 })
 export class SidenavButtonsComponent implements OnInit {
 
+  @Output() closeSidebar = new EventEmitter();
+
   private roles: string[];
   isLoggedIn = false;
   isAdmin = false;
   isModerator = false;
   username: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService) {
+  }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -27,4 +31,7 @@ export class SidenavButtonsComponent implements OnInit {
     }
   }
 
+  closeSidenav() {
+    this.closeSidebar.emit();
+  }
 }

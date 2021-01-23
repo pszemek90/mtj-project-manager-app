@@ -13,6 +13,7 @@ import {Project} from "../model/project";
 export class MessageComponent implements OnInit {
 
   public message: Message = {
+    tags: [],
     category: "", date: 0, project: "", text: "", title: "", uuid: ""
   };
 
