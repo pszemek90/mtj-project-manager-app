@@ -2,6 +2,9 @@
 @import url(~bootstrap/dist/css/bootstrap.min.css);
 @import url(~font-awesome/css/font-awesome.css);
 @import url(~@angular/material/prebuilt-themes/indigo-pink.css);
+body, html {
+  height: 100%;
+}
 /*@import url(~@angular/material/prebuilt-themes/pink-bluegrey.css);*/
 
 /*html, body { height: 100%; }*/
