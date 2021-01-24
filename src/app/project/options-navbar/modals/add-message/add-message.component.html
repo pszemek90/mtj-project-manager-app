@@ -18,21 +18,38 @@
                [(ngModel)]="message.category"
                placeholder="Kategoria">
       </div>
-      <div class="form-group row p-3 button-on-side">
-        <input #tag type="text" name="tags"
-               class="form-control form-control-lg d-inline-block"
-               id="tags"
-               placeholder="Tagi">
-          <button type="button" mat-icon-button mat-raised-button class="ml-2"
-                  (click)="addTag(tag.value)">
-            <mat-icon>add</mat-icon>
-          </button>
-      </div>
-      <ul>
-        <li *ngFor="let tag of message.tags">
+      <!--      <div class="form-group row p-3 button-on-side">-->
+      <!--        <input #tag type="text" name="tags"-->
+      <!--               class="form-control form-control-lg d-inline-block"-->
+      <!--               id="tags"-->
+      <!--               placeholder="Tagi">-->
+      <!--          <button type="button" mat-icon-button mat-raised-button class="ml-2"-->
+      <!--                  (click)="addTag(tag.value)">-->
+      <!--            <mat-icon>add</mat-icon>-->
+      <!--          </button>-->
+      <!--      </div>-->
+      <!--      <ul>-->
+      <!--        <li *ngFor="let tag of message.tags">-->
+      <!--          {{tag}}-->
+      <!--        </li>-->
+      <!--      </ul>-->
+
+      <mat-form-field>
+        <mat-chip-list #tags aria-label="Tags">
+          <input placeholder="Dodaj tag..."
+                 [matChipInputFor]="tags"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="addTag($event)">
+        </mat-chip-list>
+      </mat-form-field>
+      <div>
+        <mat-chip *ngFor="let tag of message.tags" [selectable]="selectable"
+                  [removable]="removable" (removed)="removeTag(tag)">
           {{tag}}
-        </li>
-      </ul>
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </div>
       <div class="form-group row p-3">
           <textarea name="text"
                     class="form-control form-control-lg"

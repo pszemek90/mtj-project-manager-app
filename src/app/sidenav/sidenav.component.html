@@ -1,9 +1,10 @@
 <app-navbar (sidenavToggle)="sidenav.toggle()"></app-navbar>
 <mat-sidenav-container
   class="mat-drawer-container"
+  (backdropClick)="sidenav.close()"
   autosize>
-  <mat-sidenav #sidenav mode="side">
-    <app-sidenav-buttons></app-sidenav-buttons>
+  <mat-sidenav #sidenav mode="push">
+    <app-sidenav-buttons (closeSidebar)="sidenav.close()"></app-sidenav-buttons>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-breadcrumb></app-breadcrumb>

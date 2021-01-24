@@ -1,19 +1,18 @@
 <div class="container my-2">
-  <div class="py-3 jumbotron">
-    <div class="text-center">
-      <h3>{{project.number}} - {{project.title}}</h3>
-    </div>
+  <div class="py-3 jumbotron text-center">
+    <h3>{{project.number}} - {{project.title}}</h3>
   </div>
-  <ul class="list-group">
+  <div class="list-group">
     <h3 class="list-group-item my-2 text-center">
-      <div>
-        {{message.title}}
-      </div>
+      {{message.title}}
     </h3>
-    <li class="list-group-item my-2 border">
-      <div>
-        {{message.text}}
-      </div>
-    </li>
-  </ul>
+    <h5 class="list-group-item my-2 border">
+      {{message.text}}
+    </h5>
+  </div>
+  <mat-chip-list>
+    <mat-chip *ngFor="let tag of message.tags">
+      {{tag}}
+    </mat-chip>
+  </mat-chip-list>
 </div>
