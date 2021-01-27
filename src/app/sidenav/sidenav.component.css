@@ -22,3 +22,8 @@ mat-sidenav-container {
   display: block;
   overflow: hidden;
 }
+
+.sidenav-content {
+  max-width: 100%;
+  min-width: 250px;
+}

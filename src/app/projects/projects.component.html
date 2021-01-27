@@ -5,7 +5,7 @@
   </form>
   <br>
   <ul class="list-group p-0">
-    <li class="list-group-item d-flex p-0 my-1 "
+    <li class="list-group-item d-flex p-0"
         *ngFor="let project of projects | projectFilter:searchText">
       <span [routerLink]="['/projects', project.uuid]"
            class="col-11 py-3 list-group-item-action d-flex justify-content-between border-right">
@@ -13,11 +13,11 @@
           {{project.number}} - {{project.title}}
         </div>
         <span *ngIf="!isModerator"
-              class="float-right">
+              >
           <i class="fas fa-edit"></i>
         </span>
         <span *ngIf="isModerator"
-              class="float-right ">
+              >
           <button mat-icon-button mat-raised-button (click)="editName(project)">
             <mat-icon>edit</mat-icon>
           </button>

@@ -7,13 +7,13 @@
   </div>
   <mat-tab-group (selectedIndexChange)="selected.setValue($event)">
     <mat-tab label="Wszystkie">
-      <div class="list-group-item d-flex my-1 p-0" *ngFor="let message of project.messages">
+      <div class="list-group-item d-flex p-0" *ngFor="let message of project.messages">
         <div class="col-11 border-right list-group-item-action py-3"
              [routerLink]="['/projects', project.uuid, 'messages', message.uuid]">
         <span>
           {{message.title}}
         </span>
-          <span class="pull-right">
+          <span class="float-right">
           {{message.date | date: 'dd/MM/y HH:mm'}}
         </span>
         </div>
@@ -21,34 +21,34 @@
              class="col-1 text-center list-group-item-action py-3"
              (click)="deleteMessage(message)">
         <span>
-          <i class="fa fa-trash-o"></i>
+          <i class="fas fa-trash"></i>
         </span>
         </div>
         <div *ngIf="!isModerator"
              class="col-1 text-center py-3">
         <span>
-          <i class="fa fa-trash-o"></i>
+          <i class="fas fa-trash"></i>
         </span>
         </div>
       </div>
     </mat-tab>
     <mat-tab *ngFor="let category of project.categories" [label]="category">
-      <div *ngFor="let message of project.messages">
+      <div  *ngFor="let message of project.messages">
         <div *ngIf="(message.category | lowercase) === (category | lowercase)"
-             class="list-group-item d-flex p-0 my-1">
+             class="list-group-item d-flex my-1 p-0" >
           <div class="col-11 border-right list-group-item-action py-3"
                [routerLink]="['/projects', project.uuid, 'messages', message.uuid]">
           <span>
             {{message.title}}
           </span>
-            <span class="pull-right">
+            <span class="float-right">
             {{message.date | date: 'dd/MM/y HH:mm'}}
           </span>
           </div>
           <div *ngIf="isModerator" class="col-1 text-center list-group-item-action py-3"
                (click)="deleteMessage(message)">
           <span>
-            <i class="fa fa-trash-o"></i>
+            <i class="fas fa-trash"></i>
           </span>
           </div>
         </div>
