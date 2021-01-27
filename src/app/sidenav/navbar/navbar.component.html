@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark d-block bg-dark">
+<nav class="navbar navbar-expand-lg d-block navbar-dark bg-dark">
   <button mat-icon-button mat-raised-button
           class="mr-2"
           color=""
@@ -7,7 +7,7 @@
     <mat-icon>menu</mat-icon>
   </button>
   <a class="navbar-brand" href="#">
-    <i class="fa fa-book text-warning"></i>
+    <i class="fas fa-book text-warning"></i>
     <span class="text-warning"> Project Manager</span>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarButtons"
@@ -15,7 +15,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse pull-right d-block" id="navbarButtons">
+  <div class="collapse navbar-collapse float-right" id="navbarButtons">
     <span *ngIf="!isLoggedIn">
       <button type="button" class="btn btn-warning mx-1 text-dark" routerLink="login">
         <span>Zaloguj się</span>

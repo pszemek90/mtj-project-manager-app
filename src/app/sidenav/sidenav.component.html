@@ -3,7 +3,7 @@
   class="mat-drawer-container"
   (backdropClick)="sidenav.close()"
   autosize>
-  <mat-sidenav #sidenav mode="push">
+  <mat-sidenav #sidenav mode="push" class="bg-dark">
     <app-sidenav-buttons (closeSidebar)="sidenav.close()"></app-sidenav-buttons>
   </mat-sidenav>
   <mat-sidenav-content>

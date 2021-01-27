@@ -1,26 +1,37 @@
 <div class="container">
-    <form class="form-row mx-0">
-      <input class="form-control" type="text" placeholder="Search" aria-label="Search"
-             [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
-    </form>
+  <form class="form-row mx-0">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search"
+           [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
+  </form>
   <br>
   <ul class="list-group p-0">
-    <li class="list-group-item  d-flex p-0 my-1"
+    <li class="list-group-item d-flex p-0 my-1 "
         *ngFor="let project of projects | projectFilter:searchText">
-<!--      <div [routerLink]="[project.uuid]"-->
-      <div [routerLink]="['/projects', project.uuid]"
-           class="col-11 py-3 btn-primary list-group-item list-group-item-action">
-        {{project.number}} - {{project.title}}
-      </div>
-      <div (click)="delete(project)"
+      <span [routerLink]="['/projects', project.uuid]"
+           class="col-11 py-3 list-group-item-action d-flex justify-content-between border-right">
+        <div class="my-auto">
+          {{project.number}} - {{project.title}}
+        </div>
+        <span *ngIf="!isModerator"
+              class="float-right">
+          <i class="fas fa-edit"></i>
+        </span>
+        <span *ngIf="isModerator"
+              class="float-right ">
+          <button mat-icon-button mat-raised-button (click)="editName(project)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </span>
+      </span>
+      <span (click)="delete(project)"
            *ngIf="isModerator"
-           class="col-1 py-3 text-center btn-primary list-group-item list-group-item-action">
-        <i class="fa fa-trash-o"></i>
-      </div>
-      <div *ngIf="!isModerator"
+           class="col-1 py-4 text-center list-group-item-action">
+        <i class="fas fa-trash"></i>
+      </span>
+      <span *ngIf="!isModerator"
            class="col-1 py-3 text-center">
-        <i class="fa fa-trash-o"></i>
-      </div>
+        <i class="fas fa-trash"></i>
+      </span>
     </li>
   </ul>
 </div>

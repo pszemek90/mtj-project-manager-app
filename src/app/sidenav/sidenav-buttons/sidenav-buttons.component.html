@@ -1,11 +1,11 @@
 <ul class="navbar-nav mr-auto">
-  <li class="nav-item active" *ngIf="isLoggedIn">
-    <button mat-raised-button class="my-1"
+  <li *ngIf="isLoggedIn">
+    <button class="my-1 btn btn-secondary"
             (click)="closeSidenav()"
             routerLink="/projects">Projekty</button>
   </li>
   <li *ngIf="isModerator">
-    <button mat-raised-button class="my-1"
+    <button class="my-1 btn btn-secondary"
             (click)="closeSidenav()"
             routerLink="add-project" >
       <i class="fa fa-plus"></i>
@@ -13,7 +13,7 @@
     </button>
   </li>
   <li *ngIf="isAdmin">
-    <button mat-raised-button class="my-1"
+    <button class="my-1 btn btn-secondary"
             (click)="closeSidenav()"
             routerLink="add-user" >
       <i class="fa fa-plus"></i>

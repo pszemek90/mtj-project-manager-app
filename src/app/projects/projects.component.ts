@@ -50,4 +50,8 @@ export class ProjectsComponent implements OnInit {
       )
     }
   }
+
+  editName(project: Project) {
+
+  }
 }
